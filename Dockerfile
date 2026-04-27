@@ -20,8 +20,8 @@ COPY priv priv
 
 RUN mix assets.deploy
 RUN mix compile
-RUN mix phx.digest
+RUN mix release
 
 EXPOSE 10000
 
-CMD /app/bin/codebridge eval "Codebridge.Release.migrate()" && /app/bin/codebridge start
+CMD /app/_build/prod/rel/codebridge/bin/codebridge eval "Codebridge.Release.migrate()" && /app/_build/prod/rel/codebridge/bin/codebridge start
