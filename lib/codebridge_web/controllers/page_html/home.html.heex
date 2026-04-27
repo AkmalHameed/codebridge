@@ -1,0 +1,145 @@
+<%= if @conn.params["success"] do %>
+  <div id="success-banner" style="background: var(--primary); color: var(--dark); padding: 1rem 2rem; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; position: relative; z-index: 10; margin-top: 80px;">
+    🎉 Application submitted successfully! We'll be in touch soon.
+  </div>
+  <script>
+    setTimeout(function() {
+      var banner = document.getElementById('success-banner');
+      if (banner) {
+        banner.style.transition = 'opacity 0.5s';
+        banner.style.opacity = '0';
+        setTimeout(function() { banner.remove(); }, 500);
+      }
+    }, 4000);
+  </script>
+<% end %>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>
+        Build Your Future<br>
+        in <span class="gradient-text">AI</span>
+      </h1>
+      <p class="hero-subtitle">
+        Free intensive training. Real opportunities. Empowering underrepresented communities with cutting-edge AI and machine learning skills.
+      </p>
+      <a href="/applications/new" class="cta-button">Apply for Next Cohort</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">92%</span>
+        <span class="stat-label">Employment Rate</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">$85K</span>
+        <span class="stat-label">Avg Starting Salary</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Tuition Free</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">12mo</span>
+        <span class="stat-label">Full Program</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="program">
+  <div class="container">
+    <h2 class="section-title">Two-Track Program</h2>
+    <div class="modules-grid">
+      <a href="/program/module-1" class="module-card">
+        <div class="module-header">
+          <span class="module-number">Module 01</span>
+          <span class="module-value">$12,000 Value</span>
+        </div>
+        <h3 class="module-title">AI Foundations & Development</h3>
+        <p class="module-duration">January - June • 6 Months</p>
+        <ul class="module-list">
+          <li>Python programming fundamentals</li>
+          <li>Data structures and algorithms</li>
+          <li>Data science and analytics</li>
+          <li>Machine learning basics</li>
+          <li>AI ethics and responsible development</li>
+          <li>SQL and database management</li>
+          <li>Git and version control</li>
+          <li>Portfolio project development</li>
+        </ul>
+      </a>
+      <a href="/program/module-2" class="module-card">
+        <div class="module-header">
+          <span class="module-number">Module 02</span>
+          <span class="module-value">$20,000 Value</span>
+        </div>
+        <h3 class="module-title">AI Specialization & Career Launch</h3>
+        <p class="module-duration">July - December • 6 Months</p>
+        <ul class="module-list">
+          <li>Advanced ML and deep learning</li>
+          <li>Neural networks and TensorFlow</li>
+          <li>LLM applications and prompt engineering</li>
+          <li>Computer vision and NLP</li>
+          <li>AI product development</li>
+          <li>Startup incubator and capstone project</li>
+          <li>Technical interview preparation</li>
+          <li>Job placement support</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="tech-stack">
+  <div class="container">
+    <h2 class="section-title">Technologies You'll Master</h2>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="tech-icon">🐍</div>
+        <div class="tech-name">Python</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">🧠</div>
+        <div class="tech-name">TensorFlow</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">📊</div>
+        <div class="tech-name">Pandas</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">🔬</div>
+        <div class="tech-name">Scikit-learn</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">💬</div>
+        <div class="tech-name">NLP</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">👁️</div>
+        <div class="tech-name">Computer Vision</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">🗄️</div>
+        <div class="tech-name">SQL</div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">⚡</div>
+        <div class="tech-name">PyTorch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Change Your Future?</h2>
+    <p>Applications for our next cohort are open. Join a community of learners breaking into AI and building the future of technology.</p>
+    <a href="/applications/new" class="cta-button">Submit Your Application</a>
+  </div>
+</section>

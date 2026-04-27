@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="csrf-token" content={get_csrf_token()}/>
+    <title>CodeBridge Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <style>
+      <%= raw(File.read!(Path.join(:code.priv_dir(:codebridge), "static/assets/css/app.css"))) %>
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo">CodeBridge</a>
+        <ul class="nav-links">
+          <li><a href="/program">Program</a></li>
+          <li><a href="/curriculum">Curriculum</a></li>
+          <li><a href="/requirements">Requirements</a></li>
+          <li><a href="/applications/new">Apply</a></li>
+        </ul>
+      </nav>
+    </header>
+    <%= if Phoenix.Flash.get(@flash, :info) do %>
+    <div style="background: var(--primary); color: var(--dark); padding: 1rem 2rem; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">
+      <%= Phoenix.Flash.get(@flash, :info) %>
+    </div>
+  <% end %>
+
+  <%= if Phoenix.Flash.get(@flash, :error) do %>
+    <div style="background: var(--secondary); color: white; padding: 1rem 2rem; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">
+      <%= Phoenix.Flash.get(@flash, :error) %>
+    </div>
+  <% end %>
+    <%= @inner_content %>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/program">Program</a>
+          <a href="/curriculum">Curriculum</a>
+          <a href="/requirements">Requirements</a>
+          <a href="mailto:akmal.hameed@dcmail.ca">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2026 CodeBridge Academy • Empowering Communities Through AI Education</p>
+      </div>
+    </footer>
+    <script>
+      <%= raw(File.read!(Path.join(:code.priv_dir(:codebridge), "static/assets/js/app.js"))) %>
+    </script>
+  </body>
+</html>

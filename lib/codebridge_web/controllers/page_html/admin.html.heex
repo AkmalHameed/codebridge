@@ -1,0 +1,51 @@
+<section class="page-hero">
+  <div class="container">
+    <h1>Admin <span class="gradient-text">Dashboard</span></h1>
+    <p>All applications submitted to CodeBridge Academy.</p>
+  </div>
+</section>
+
+<section style="padding: 4rem 0;">
+  <div class="container">
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--primary);">
+            <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Name</th>
+            <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Email</th>
+            <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Phone</th>
+            <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Module</th>
+            <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Status</th>
+            <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= for application <- @applications do %>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(0,255,136,0.05)'" onmouseout="this.style.background='transparent'">
+              <td style="padding: 1rem; color: var(--light);"><%= application.name %></td>
+              <td style="padding: 1rem; color: var(--text-muted);"><%= application.email %></td>
+              <td style="padding: 1rem; color: var(--text-muted);"><%= application.phone %></td>
+              <td style="padding: 1rem; color: var(--accent);"><%= application.module %></td>
+              <td style="padding: 1rem;">
+                <span style={"background: #{status_color(application.status)}; color: var(--dark); padding: 0.3rem 0.8rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;"}>
+                  <%= application.status %>
+                </span>
+              </td>
+              <td style="padding: 1rem; color: var(--text-muted);"><%= Calendar.strftime(application.inserted_at, "%b %d, %Y") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= if Enum.empty?(@applications) do %>
+        <div style="text-align: center; padding: 4rem; color: var(--text-muted);">
+          No applications yet.
+        </div>
+      <% end %>
+    </div>
+
+    <div style="margin-top: 2rem; color: var(--text-muted); font-size: 0.85rem;">
+      Total applications: <span style="color: var(--primary); font-weight: 700;"><%= length(@applications) %></span>
+    </div>
+  </div>
+</section>
