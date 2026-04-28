@@ -20,7 +20,7 @@ defmodule CodebridgeWeb.Router do
   end
 
   defp basic_auth(conn, _opts) do
-    username = "admin"
+    username = "akmal"
     password = "codebridge2026"
 
     case Plug.BasicAuth.parse_basic_auth(conn) do
