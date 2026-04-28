@@ -1,0 +1,48 @@
+<section class="page-hero">
+  <div class="container">
+    <a href="/admin" style="color: var(--primary); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;">← Back to Admin</a>
+    <h1 style="margin-top: 1rem;"><span class="gradient-text"><%= @application.name %></span></h1>
+    <p>Application submitted on <%= Calendar.strftime(@application.inserted_at, "%B %d, %Y") %></p>
+  </div>
+</section>
+
+<section style="padding: 4rem 0;">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <div class="requirement-card" style="margin-bottom: 2rem;">
+        <h3 class="requirement-title">Contact Information</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.5rem;">📧 <%= @application.email %></p>
+        <p style="color: var(--text-muted); margin-bottom: 0.5rem;">📞 <%= @application.phone %></p>
+        <p style="color: var(--accent);">📚 <%= @application.module %></p>
+      </div>
+
+      <div class="requirement-card" style="margin-bottom: 2rem;">
+        <h3 class="requirement-title">Background</h3>
+        <p style="color: var(--text-muted); line-height: 1.8;"><%= @application.background %></p>
+      </div>
+
+      <div class="requirement-card" style="margin-bottom: 2rem;">
+        <h3 class="requirement-title">Motivation</h3>
+        <p style="color: var(--text-muted); line-height: 1.8;"><%= @application.motivation %></p>
+      </div>
+
+      <div class="requirement-card" style="margin-bottom: 2rem;">
+        <h3 class="requirement-title">Status</h3>
+        <p style="margin-bottom: 1.5rem;">
+          <span style={"background: #{status_color(@application.status)}; color: var(--dark); padding: 0.3rem 0.8rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;"}>
+            <%= @application.status %>
+          </span>
+        </p>
+        <%= if @application.status == "pending" do %>
+          <form method="post" action={"/admin/#{@application.id}/review"}>
+            <input type="hidden" name="_method" value="put"/>
+            <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()}/>
+            <button type="submit" class="cta-button">Mark as Reviewed</button>
+          </form>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</section>

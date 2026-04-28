@@ -17,12 +17,17 @@
             <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Module</th>
             <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Status</th>
             <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Date</th>
+            <th style="padding: 1rem; text-align: left; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em;">Action</th>
           </tr>
         </thead>
         <tbody>
           <%= for application <- @applications do %>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(0,255,136,0.05)'" onmouseout="this.style.background='transparent'">
-              <td style="padding: 1rem; color: var(--light);"><%= application.name %></td>
+              <td style="padding: 1rem;">
+                <a href={"/admin/#{application.id}"} style="color: var(--light); text-decoration: none; font-weight: 700;">
+                  <%= application.name %>
+                </a>
+              </td>
               <td style="padding: 1rem; color: var(--text-muted);"><%= application.email %></td>
               <td style="padding: 1rem; color: var(--text-muted);"><%= application.phone %></td>
               <td style="padding: 1rem; color: var(--accent);"><%= application.module %></td>
@@ -32,6 +37,9 @@
                 </span>
               </td>
               <td style="padding: 1rem; color: var(--text-muted);"><%= Calendar.strftime(application.inserted_at, "%b %d, %Y") %></td>
+              <td style="padding: 1rem;">
+                <a href={"/admin/#{application.id}"} style="color: var(--primary); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;">View →</a>
+              </td>
             </tr>
           <% end %>
         </tbody>

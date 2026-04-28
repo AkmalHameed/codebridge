@@ -31,4 +31,18 @@ defmodule CodebridgeWeb.PageController do
     applications = Applications.list_applications()
     render(conn, :admin, applications: applications)
   end
+
+  def admin_show(conn, %{"id" => id}) do
+    application = Applications.get_application!(id)
+    render(conn, :admin_show, application: application)
+  end
+
+  def admin_review(conn, %{"id" => id}) do
+    application = Applications.get_application!(id)
+    Applications.update_application(application, %{status: "reviewed"})
+
+    conn
+    |> put_flash(:info, "Application marked as reviewed!")
+    |> redirect(to: "/admin/#{id}")
+  end
 end
